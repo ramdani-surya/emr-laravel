@@ -215,17 +215,17 @@
                             <a href="#"><i class="icon-people"></i> SDM <div class="arrow-down"></div></a>
                             <ul class="submenu">
                                 <li><a href="{{ route('doctors.index') }}">Dokter</a></li>
-                                <li><a href="{{ route('hr.nurses') }}">Perawat</a></li>
-                                <li><a href="{{ route('hr.staffs') }}">Staf Administrasi</a></li>
-                                <li><a href="{{ route('hr.admins') }}">Admin</a></li>
+                                <li><a href="{{ route('nurses.index') }}">Perawat</a></li>
+                                <li><a href="{{ route('staffs.index') }}">Staf Administrasi</a></li>
+                                <li><a href="{{ route('admins.index') }}">Administrator</a></li>
                             </ul>
                         </li>
 
                         <li class="has-submenu">
                             <a href="#"><i class="icon-chemistry"></i> Apotek <div class="arrow-down"></div></a>
                             <ul class="submenu">
-                                <li><a href="{{ route('pharmacies.drugs') }}">Obat</a></li>
-                                <li><a href="{{ route('pharmacies.recipes') }}">Resep</a></li>
+                                <li><a href="{{ route('drugs.index') }}">Obat</a></li>
+                                <li><a href="{{ route('prescriptions.index') }}">Resep</a></li>
                             </ul>
                         </li>
 

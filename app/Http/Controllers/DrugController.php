@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Models\Drug;
 use Illuminate\Http\Request;
 
-class DoctorController extends Controller
+class DrugController extends Controller
 {
-    private $subtitle = 'Dokter';
+    private $subtitle = 'Obat';
 
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class DoctorController extends Controller
         $subtitle    = $this->subtitle;
         $breadcrumbs = [$this->subtitle];
 
-        return view('doctor-data', compact('subtitle', 'breadcrumbs'));
+        return view('drug-data', compact('subtitle', 'breadcrumbs'));
     }
 
     /**
@@ -29,11 +29,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        $formTitle = 'Tambah Dokter';
-        $subtitle    = $this->subtitle;
-        $breadcrumbs = [$this->subtitle, $formTitle];
-
-        return view('layouts/human-resources-add', compact('subtitle', 'breadcrumbs', 'formTitle'));
+        //
     }
 
     /**
@@ -50,10 +46,10 @@ class DoctorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\User  $doctor
+     * @param  \App\Models\Drug  $drug
      * @return \Illuminate\Http\Response
      */
-    public function show(User $doctor)
+    public function show(Drug $drug)
     {
         //
     }
@@ -61,10 +57,10 @@ class DoctorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\User  $doctor
+     * @param  \App\Models\Drug  $drug
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $doctor)
+    public function edit(Drug $drug)
     {
         //
     }
@@ -73,10 +69,10 @@ class DoctorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $doctor
+     * @param  \App\Models\Drug  $drug
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $doctor)
+    public function update(Request $request, Drug $drug)
     {
         //
     }
@@ -84,10 +80,10 @@ class DoctorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\User  $doctor
+     * @param  \App\Models\Drug  $drug
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $doctor)
+    public function destroy(Drug $drug)
     {
         //
     }

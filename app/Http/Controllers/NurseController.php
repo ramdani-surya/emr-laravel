@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 
-class DoctorController extends Controller
+class NurseController extends Controller
 {
-    private $subtitle = 'Dokter';
+    private $subtitle = 'Perawat';
 
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class DoctorController extends Controller
         $subtitle    = $this->subtitle;
         $breadcrumbs = [$this->subtitle];
 
-        return view('doctor-data', compact('subtitle', 'breadcrumbs'));
+        return view('nurse-data', compact('subtitle', 'breadcrumbs'));
     }
 
     /**
@@ -29,11 +29,11 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        $formTitle = 'Tambah Dokter';
+        $formTitle   = 'Tambah Perawat';
         $subtitle    = $this->subtitle;
         $breadcrumbs = [$this->subtitle, $formTitle];
 
-        return view('layouts/human-resources-add', compact('subtitle', 'breadcrumbs', 'formTitle'));
+        return view('layouts/human-resources-add', compact('formTitle', 'subtitle', 'breadcrumbs'));
     }
 
     /**
@@ -50,10 +50,10 @@ class DoctorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\User  $doctor
+     * @param  \App\User  $nurse
      * @return \Illuminate\Http\Response
      */
-    public function show(User $doctor)
+    public function show(User $nurse)
     {
         //
     }
@@ -61,10 +61,10 @@ class DoctorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\User  $doctor
+     * @param  \App\User  $nurse
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $doctor)
+    public function edit(User $nurse)
     {
         //
     }
@@ -73,10 +73,10 @@ class DoctorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $doctor
+     * @param  \App\User  $nurse
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $doctor)
+    public function update(Request $request, User $nurse)
     {
         //
     }
@@ -84,10 +84,10 @@ class DoctorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\User  $doctor
+     * @param  \App\User  $nurse
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $doctor)
+    public function destroy(User $nurse)
     {
         //
     }

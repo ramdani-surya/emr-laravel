@@ -91,7 +91,7 @@
 
             <div class="form-group">
                 <div class="col-12">
-                    <label for="poliklinik">Nama Poliklinik</label>
+                    <label for="poliklinik">Nama Poliklinik <span class="text-danger">*</span></label>
                     <input class="form-control" parsley-trigger="change" type="text" id="poliklinik" name="poliklinik"
                         required>
                 </div>
@@ -99,7 +99,7 @@
 
             <div class="form-group">
                 <div class="col-12">
-                    <label for="lokasi">Lokasi</label>
+                    <label for="lokasi">Lokasi <span class="text-danger">*</span></label>
                     <input class="form-control" parsley-trigger="change" type="text" name="lokasi" id="lokasi" required>
                 </div>
             </div>

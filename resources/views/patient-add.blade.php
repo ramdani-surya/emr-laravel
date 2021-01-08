@@ -15,12 +15,8 @@
                 @include('layouts/patient-data-form')
 
                 <div class="form-group text-right mb-0">
-                    <button class="btn btn-primary waves-effect waves-light mr-1" type="submit">
-                        Simpan
-                    </button>
-                    <button type="reset" class="btn btn-light waves-effect">
-                        Batal
-                    </button>
+                    <button type="button" class="btn btn-light btn-rounded waves-effect">Batal</button>
+                    <button type="submit" class="btn btn-primary btn-rounded waves-light waves-effect">Simpan</button>
                 </div>
             </form>
         </div>

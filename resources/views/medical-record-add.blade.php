@@ -25,9 +25,9 @@
                     </div>
                 </div>
                 <div class="form-group clearfix">
-                    <label class="control-label" for="keluhan">Keluhan <span class="text-danger">*</span></label>
+                    <label class="control-label" for="anamnesa">Anamnesa <span class="text-danger">*</span></label>
                     <div>
-                        <select multiple data-role="tagsinput" id="keluhan" name="keluhan" parsley-trigger="change"
+                        <select multiple data-role="tagsinput" id="anamnesa" name="anamnesa" parsley-trigger="change"
                             required></select>
                     </div>
                 </div>
