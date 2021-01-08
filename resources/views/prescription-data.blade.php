@@ -21,10 +21,7 @@
                         <th>Pasien</th>
                         <th>Dokter</th>
                         <th>Obat</th>
-                        <th>
-                            <a href="{{ route('prescriptions.create') }}"
-                                class="btn btn-success waves-light waves-effect">Tambah</a>
-                        </th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
 

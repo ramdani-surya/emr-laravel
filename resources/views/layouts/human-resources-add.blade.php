@@ -59,24 +59,10 @@
                 </div>
 
                 <div class="form-group clearfix">
-                    <label class="control-label" for="kecamatan">Kecamatan<span class="text-danger">*</span></label>
-                    <div>
-                        <input class="form-control" id="kecamatan" type="text" name="kecamatan" required>
-                    </div>
-                </div>
-
-                <div class="form-group clearfix">
-                    <label class="control-label" for="kota">Kota<span class="text-danger">*</span></label>
-                    <div>
-                        <input class="form-control" id="kota" type="text" name="kota" required>
-                    </div>
-                </div>
-
-                <div class="form-group clearfix">
-                    <label class="control-label" for="alamat_lengkap">Alamat Lengkap<span
+                    <label class="control-label" for="alamat">Alamat<span
                             class="text-danger">*</span></label>
                     <div>
-                        <textarea class="form-control" name="alamat_lengkap" id="alamat_lengkap" rows="5"
+                        <textarea class="form-control" name="alamat" id="alamat" rows="5"
                             required></textarea>
                     </div>
                 </div>
@@ -88,6 +74,14 @@
                             data-toggle="input-mask" data-mask-format="+(00) 000-0000-0000"
                             placeholder="+(62) 812-3456-7890" name="telepon" required>
                         <span class="font-13 text-muted">Masukkan dengan kode area.</span>
+                    </div>
+                </div>
+
+                <div class="form-group clearfix">
+                    <label class="control-label" for="email">Email<span class="text-danger">*</span></label>
+                    <div>
+                        <input class="form-control" id="email" type="email" parsley-trigger="change" name="email"
+                            required>
                     </div>
                 </div>
 
@@ -137,25 +131,26 @@
 <script>
     $(document).ready(function () {
         if ($('.header-title').text() === 'Tambah Dokter') {
-            $('.password-form').after('<div class="form-group clearfix">'
-                    + '<label class="control-label" for="poliklinik">Poliklinik<span class="text-danger">*</span></label>'
-                    + '<div>'
-                        + '<select class="form-control select2" id="poliklinik" name="poliklinik" required>'
-                            + '<option disabled selected>-- Pilih poliklinik --</option>'
-                            + '<option value="Umum">Umum</option>'
-                            + '<option value="Gigi">Gigi</option>'
-                            + '<option value="Penyakit Dalam">Penyakit Dalam</option>'
-                            + '<option value="Anak">Anak</option>'
-                            + '<option value="Kebidanan dan Kandungan">Kebidanan & Kandungan</option>'
-                            + '<option value="Penyakit Syaraf">Penyakit Syaraf</option>'
-                            + '<option value="Kulit dan Kelamin">Kulit dan Kelamin</option>'
-                            + '<option value="Mata">Mata</option>'
-                            + '<option value="Radiologi">Radiologi</option>'
-                        + '</select>'
-                    + '</div>'
-                + '</div>');
+            $('.password-form').after('<div class="form-group clearfix">' +
+                '<label class="control-label" for="poliklinik">Poliklinik<span class="text-danger">*</span></label>' +
+                '<div>' +
+                '<select class="form-control select2" id="poliklinik" name="poliklinik" required>' +
+                '<option disabled selected>-- Pilih poliklinik --</option>' +
+                '<option value="Umum">Umum</option>' +
+                '<option value="Gigi">Gigi</option>' +
+                '<option value="Penyakit Dalam">Penyakit Dalam</option>' +
+                '<option value="Anak">Anak</option>' +
+                '<option value="Kebidanan dan Kandungan">Kebidanan & Kandungan</option>' +
+                '<option value="Penyakit Syaraf">Penyakit Syaraf</option>' +
+                '<option value="Kulit dan Kelamin">Kulit dan Kelamin</option>' +
+                '<option value="Mata">Mata</option>' +
+                '<option value="Radiologi">Radiologi</option>' +
+                '</select>' +
+                '</div>' +
+                '</div>');
         }
     });
+
 </script>
 
 {!! config('constant.resources.js.select2') !!}

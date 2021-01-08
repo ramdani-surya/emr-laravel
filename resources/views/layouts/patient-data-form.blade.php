@@ -43,23 +43,22 @@
 </div>
 
 <div class="form-group clearfix">
-    <label class="control-label" for="kecamatan">Kecamatan<span class="text-danger">*</span></label>
+    <label class="control-label" for="golongan darah">Golongan Darah<span class="text-danger">*</span></label>
     <div>
-        <input class="form-control" id="kecamatan" type="text" name="kecamatan" required>
+        <select class="required form-control select2" id="golongan darah" name="golongan darah" required>
+            <option disabled selected>-- Pilih golongan darah --</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="AB">AB</option>
+            <option value="O">O</option>
+        </select>
     </div>
 </div>
 
 <div class="form-group clearfix">
-    <label class="control-label" for="kota">Kota<span class="text-danger">*</span></label>
+    <label class="control-label" for="alamat">Alamat<span class="text-danger">*</span></label>
     <div>
-        <input class="form-control" id="kota" type="text" name="kota" required>
-    </div>
-</div>
-
-<div class="form-group clearfix">
-    <label class="control-label" for="alamat_lengkap">Alamat Lengkap<span class="text-danger">*</span></label>
-    <div>
-        <textarea class="form-control" name="alamat_lengkap" id="alamat_lengkap" rows="5" required></textarea>
+        <textarea class="form-control" name="alamat" id="alamat" rows="5" required></textarea>
     </div>
 </div>
 

@@ -31,7 +31,7 @@
             <h4>Diagnosis: Mata kering</h4>
 
             <div class="task-tags mt-3">
-                <h5>Keluhan</h5>
+                <h5>Anamnesa</h5>
                 <input type="text" value="Mata merah,Mata terasa panas,Penglihatan buram" data-role="tagsinput"
                     disabled />
             </div>

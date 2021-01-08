@@ -15,13 +15,16 @@ class CreateMedicalRecordsTable extends Migration
     {
         Schema::create('medical_records', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('patient_id');
-            $table->foreignId('doctor_id');
-            $table->integer('patient_age');
-            $table->text('complaints');
-            $table->string('diagnosis');
-            $table->text('notes')->nullable();
-            $table->dateTime('action_date');
+            $table->foreignId('patient_id')->constrained();
+            $table->foreignId('doctor_id',)->constrained('users')->nullable();
+            $table->foreignId('nurse_id')->constrained('users')->nullable();
+            $table->string('diagnosis')->nullable();
+            $table->text('anamnesis')->nullable();
+            $table->integer('height')->nullable();
+            $table->double('weight', 5, 2)->nullable();
+            $table->string('blood_pressure')->nullable();
+            $table->text('action')->nullable();
+            $table->dateTime('action_date')->nullable();
             $table->timestamps();
         });
     }
