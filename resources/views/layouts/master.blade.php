@@ -15,9 +15,7 @@
     @yield('required_css')
 
     <!-- App css -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/app.min.css') }}" rel="stylesheet" type="text/css" />
+    {!! config('constant.resources.css.app') !!}
 
 </head>
 
@@ -308,12 +306,12 @@
     <div class="rightbar-overlay"></div>
 
     <!-- Vendor js -->
-    <script src="{{ asset('js/vendor.min.js') }}"></script>
+    {!! config('constant.resources.js.vendor') !!}
 
     @yield('required_js')
 
     <!-- App js -->
-    <script src="{{ asset('js/app.min.js') }}"></script>
+    {!! config('constant.resources.js.app') !!}
 
 </body>
 

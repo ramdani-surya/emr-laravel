@@ -3,6 +3,10 @@
 return [
     'resources' => [
         'css' => [
+            'app' => '<link href="' . env('APP_URL') . '/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+                <link href="' . env('APP_URL') . '/css/icons.min.css" rel="stylesheet" type="text/css" />
+                <link href="' . env('APP_URL') . '/css/app.min.css" rel="stylesheet" type="text/css" />',
+
             'boostrap_select'    => '<link href="' . env('APP_URL') . '/libs/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" type="text/css" />',
             'boostrap_tagsinput' => '<link href="' . env('APP_URL') . '/libs/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" type="text/css" />',
 
@@ -24,6 +28,8 @@ return [
             'x_editable' => '<link href="' . env('APP_URL') . '/libs/x-editable/bootstrap-editable.css" rel="stylesheet" type="text/css" />',
         ],
         'js' => [
+            'app' => '<script src="' . env('APP_URL') . '/js/app.min.js"></script>',
+
             'boostrap_filestyle' => '<script src="' . env('APP_URL') . '/libs/bootstrap-filestyle2/bootstrap-filestyle.min.js"></script>',
             'boostrap_maxlength' => '<script src="' . env('APP_URL') . '/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>',
             'boostrap_select'    => '<script src="' . env('APP_URL') . '/libs/bootstrap-select/bootstrap-select.min.js"></script>',
@@ -73,6 +79,8 @@ return [
 
             'sweet_alert'      => '<script src="' . env('APP_URL') . '/libs/sweetalert2/sweetalert2.min.js"></script>',
             'sweet_alert_init' => '<script src="' . env('APP_URL') . '/js/pages/sweet-alerts.init.js"></script>',
+
+            'vendor' => '<script src="' . env('APP_URL') . '/js/vendor.min.js"></script>',
 
             'x_editable' => '<script src="' . env('APP_URL') . '/libs/moment/moment.min.js"></script>
                 <script src="' . env('APP_URL') . '/libs/x-editable/bootstrap-editable.min.js"></script>',

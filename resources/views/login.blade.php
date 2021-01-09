@@ -12,9 +12,7 @@
     <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}">
 
     <!-- App css -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/icons.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('css/app.min.css') }}" rel="stylesheet" type="text/css" />
+    {!! config('constant.resources.css.app') !!}
 
 </head>
 
@@ -39,22 +37,32 @@
                             </a>
                         </h2>
 
-                        <form class="" action="#">
+                        <form class="parsley-examples" action="{{ route('auth.login') }}" method="POST">
+                            @csrf
+
+                            @error('wrong_password')
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                {{ $message }}
+                            </div>
+                            @enderror
 
                             <div class="form-group row">
                                 <div class="col-12">
-                                    <label for="emailaddress">Email/Username</label>
-                                    <input class="form-control" type="text" id="emailaddress" required=""
-                                        placeholder="Masukkan email atau username">
+                                    <label for="email">Email</label>
+                                    <input class="form-control" type="email" parsley-trigger="change" id="email"
+                                        name="email" required placeholder="Masukkan email">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-12">
-                                    <a href="page-recoverpw.html" class="text-muted float-right"><small>Lupa
+                                    <a href="#" class="text-muted float-right"><small>Lupa
                                             password?</small></a>
                                     <label for="password">Password</label>
-                                    <input class="form-control" type="password" required="" id="password"
+                                    <input class="form-control" type="password" required id="password" name="password"
                                         placeholder="Masukkan password">
                                 </div>
                             </div>
@@ -63,7 +71,7 @@
                                 <div class="col-12">
 
                                     <div class="checkbox checkbox-primary">
-                                        <input id="remember" type="checkbox" checked="">
+                                        <input id="remember" name="remember" type="checkbox" value="true" checked>
                                         <label for="remember">
                                             Ingat saya
                                         </label>
@@ -74,7 +82,8 @@
 
                             <div class="form-group row text-center">
                                 <div class="col-12">
-                                    <a href="/" class="btn btn-block btn-primary waves-effect waves-light">Masuk</a>
+                                    <button type="submit"
+                                        class="btn btn-block btn-primary waves-effect waves-light">Masuk</button>
                                 </div>
                             </div>
 
@@ -94,10 +103,19 @@
     </div>
 
     <!-- Vendor js -->
-    <script src="{{ asset('js/vendor.min.js') }}" `></script>
+    {!! config('constant.resources.js.vendor') !!}
+
+    {!! config('constant.resources.js.parsley') !!}
+
+    <script>
+        $(document).ready(function () {
+            $(".parsley-examples").parsley()
+        });
+
+    </script>
 
     <!-- App js -->
-    <script src="{{ asset('js/app.min.js') }}" `></script>
+    {!! config('constant.resources.js.app') !!}
 
 </body>
 
