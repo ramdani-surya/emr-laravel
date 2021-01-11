@@ -30,4 +30,14 @@ class AuthController extends Controller
             'wrong_password' => 'password is wrong!',
         ]);
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
 }

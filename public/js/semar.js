@@ -11,6 +11,17 @@ $(document).ready(function () {
             })
         });
     });
+
+    $('.edit-polyclinic-btn').click(function (e) {
+        let id = $(this).data('id'),
+        polyclinic = $(`#name-${id}`).text(),
+        location = $(`#location-${id}`).text();
+
+        $('#edit-form').attr('action', $(this).data('url'));
+
+        $('.edit-poliklinik').val(polyclinic);
+        $('.edit-lokasi').val(location);
+    });
 });
 
 $(window).on("load", function () {
