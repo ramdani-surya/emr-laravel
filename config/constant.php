@@ -4,16 +4,16 @@ return [
     'resources' => [
         'css' => [
             'app' => '<link href="' . env('APP_URL') . '/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-                <link href="' . env('APP_URL') . '/css/icons.min.css" rel="stylesheet" type="text/css" />
-                <link href="' . env('APP_URL') . '/css/app.min.css" rel="stylesheet" type="text/css" />',
+                <link href="' . env('APP_URL') . '/css/icons.min.css" rel = "stylesheet" type = "text/css" />
+                <link href="' . env('APP_URL') . '/css/app.min.css" rel   = "stylesheet" type = "text/css" />',
 
             'boostrap_select'    => '<link href="' . env('APP_URL') . '/libs/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" type="text/css" />',
             'boostrap_tagsinput' => '<link href="' . env('APP_URL') . '/libs/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" type="text/css" />',
 
             'datatable' => '<link href="'.env('APP_URL') . '/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
-                <link href = "' . env('APP_URL') . '/libs/datatables/buttons.bootstrap4.css" rel    = "stylesheet" type = "text/css" />
-                <link href = "' . env('APP_URL') . '/libs/datatables/responsive.bootstrap4.css" rel = "stylesheet" type = "text/css" />
-                <link href = "' . env('APP_URL') . '/libs/datatables/select.bootstrap4.css" rel     = "stylesheet" type = "text/css" />',
+                <link href="' . env('APP_URL') . '/libs/datatables/buttons.bootstrap4.css" rel    = "stylesheet" type = "text/css" />
+                <link href="' . env('APP_URL') . '/libs/datatables/responsive.bootstrap4.css" rel = "stylesheet" type = "text/css" />
+                <link href="' . env('APP_URL') . '/libs/datatables/select.bootstrap4.css" rel     = "stylesheet" type = "text/css" />',
 
             'dropzone' => '<link href="' . env('APP_URL') . '/libs/dropzone/dropzone.min.css" rel="stylesheet" type="text/css" />',
 
@@ -86,5 +86,33 @@ return [
                 <script src="' . env('APP_URL') . '/libs/x-editable/bootstrap-editable.min.js"></script>',
             'x_editable_init' => '<script src="' . env('APP_URL') . '/js/pages/form-xeditable.init.js"></script>',
         ],
+    ],
+    'gender'         => ['Laki-laki', 'Perempuan'],
+    'blood_group'    => ['-', 'A', 'B', 'AB', 'O'],
+    'religion'       => ['Islam', 'Protestan', 'Katolik', 'Hindu', 'Buddha', 'Kong Hu Chu'],
+    'marital_status' => ['Belum Menikah', 'Menikah'],
+    'guarantator'    => ['Umum', 'BPJS'],
+    'hari' => [
+        'Sun' => 'Minggu',
+        'Mon' => 'Senin',
+        'Tue' => 'Selasa',
+        'Wed' => 'Rabu',
+        'Thu' => 'Kamis',
+        'Fri' => 'Jumat',
+        'Sat' => 'Sabtu'
+    ],
+    'bulan' => [
+        1 => 'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
     ],
 ];

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Patient;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PatientController extends Controller
 {
@@ -16,10 +17,11 @@ class PatientController extends Controller
      */
     public function index()
     {
-        $subtitle    = $this->subtitle;
-        $breadcrumbs = [$this->subtitle];
+        $data['subtitle']    = $this->subtitle;
+        $data['breadcrumbs'] = [$this->subtitle];
+        $data['patients']    = Patient::all();
 
-        return view('patient-data', compact('subtitle', 'breadcrumbs'));
+        return view('patient-data', $data);
     }
 
     /**
@@ -43,7 +45,35 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "nik"    => 'required|numeric|unique:patients,nik',
+            "name"   => 'required',
+            "gender" => [
+                'required',
+                Rule::in(config('constant.gender')),
+            ],
+            "birthplace"  => 'required',
+            "birthdate"   => 'required|date',
+            "blood_group" => [
+                'required',
+                Rule::in(config('constant.blood_group')),
+            ],
+            "complete_address" => 'required',
+            "phone"            => 'required',
+            "religion"         => [
+                'required',
+                Rule::in(config('constant.religion')),
+            ],
+            "profession"     => 'nullable',
+            "marital_status" => [
+                'required',
+                Rule::in(config('constant.marital_status')),
+            ],
+        ]);
+
+        Patient::create($request->all());
+
+        return redirect(route('patients.index'));
     }
 
     /**

@@ -31,14 +31,16 @@
 
 
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>1234567890</td>
-                        <td><a href="{{ route('patients.show', 1) }}">Avatar</a></td>
-                        <td>Perempuan</td>
-                        <td>01-01-1900</td>
-                        <td>Sumedang</td>
-                        <td>0832476523</td>
+                    @php $number = 1 @endphp
+                    @foreach ($patients as $patient)
+                        <tr>
+                        <td>{{ $number++ }}</td>
+                        <td>{{ $patient->nik }}</td>
+                        <td><a href="{{ route('patients.show', $patient->id) }}">{{ $patient->name }}</a></td>
+                        <td>{{ $patient->gender }}</td>
+                        <td>{{ $patient->birthplace.', '.tgl_indo($patient->birthdate) }}</td>
+                        <td>{{ $patient->complete_address }}</td>
+                        <td>{{ $patient->phone }}</td>
                         <td>
                             <div class="button-list">
                                 <button type="button" class="btn btn-icon waves-effect waves-light btn-warning"
@@ -50,44 +52,7 @@
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>1234567892</td>
-                        <td><a href="{{ route('patients.show', 1) }}">Jacob</a></td>
-                        <td>Laki-laki</td>
-                        <td>01-01-1900</td>
-                        <td>Sumedang</td>
-                        <td>084763425</td>
-                        <td>
-                            <div class="button-list">
-                                <button type="button" class="btn btn-icon waves-effect waves-light btn-warning"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"> <i
-                                        class="fas fa-pencil-alt"></i> </button>
-                                <button type="button" class="btn btn-icon waves-effect waves-light btn-danger sa-delete"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus"> <i
-                                        class="fas fa-trash-alt"></i> </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>1234567893</td>
-                        <td><a href="{{ route('patients.show', 1) }}">Larry</a></td>
-                        <td>Laki-laki</td>
-                        <td>01-01-1900</td>
-                        <td>Sumedang</td>
-                        <td>0832475347</td>
-                        <td>
-                            <div class="button-list">
-                                <button type="button" class="btn btn-icon waves-effect waves-light btn-warning"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"> <i
-                                        class="fas fa-pencil-alt"></i> </button>
-                                <button type="button" class="btn btn-icon waves-effect waves-light btn-danger sa-delete"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus"> <i
-                                        class="fas fa-trash-alt"></i> </button>
-                            </div>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

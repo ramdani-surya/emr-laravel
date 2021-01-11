@@ -29,10 +29,12 @@
 
 
                 <tbody>
+                    <?php $number = 1 ?>
+                    @foreach ($polyclinics as $polyclinic)
                     <tr>
-                        <td>1</td>
-                        <td>Poliklinik Gigi</td>
-                        <td>Lantai 1</td>
+                        <td>{{ $number++ }}</td>
+                        <td>{{ $polyclinic->polyclinic_name }}</td>
+                        <td>{{ $polyclinic->location }}</td>
                         <td>
                             <div class="button-list">
                                 <button type="button" class="btn btn-icon waves-effect waves-light btn-warning"
@@ -44,36 +46,7 @@
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Poliklinik Penyakit Dalam</td>
-                        <td>Lantai 2</td>
-                        <td>
-                            <div class="button-list">
-                                <button type="button" class="btn btn-icon waves-effect waves-light btn-warning"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"> <i
-                                        class="fas fa-pencil-alt"></i> </button>
-                                <button type="button" class="btn btn-icon waves-effect waves-light btn-danger sa-delete"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus"> <i
-                                        class="fas fa-trash-alt"></i> </button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Poliklinik Poliklinik Anak</td>
-                        <td>Lantai 1</td>
-                        <td>
-                            <div class="button-list">
-                                <button type="button" class="btn btn-icon waves-effect waves-light btn-warning"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"> <i
-                                        class="fas fa-pencil-alt"></i> </button>
-                                <button type="button" class="btn btn-icon waves-effect waves-light btn-danger sa-delete"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus"> <i
-                                        class="fas fa-trash-alt"></i> </button>
-                            </div>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

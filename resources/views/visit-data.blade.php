@@ -27,8 +27,6 @@
                         <th>Nama Lengkap</th>
                         <th>Jenis Kelamin</th>
                         <th>Tempat, Tanggal Lahir</th>
-                        <th>Kecamatan</th>
-                        <th>Kota</th>
                         <th>Alamat Lengkap</th>
                         <th>Telepon</th>
                         <th>Agama</th>
@@ -41,98 +39,38 @@
                 </thead>
 
                 <tbody>
+                    @php $number = 1 @endphp
+                    @foreach ($visits as $visit)
                     <tr>
-                        <td>1</td>
+                        <td>{{ $number++ }}</td>
                         <td>
                             <div class="button-list">
-                                <button type="button" class="btn btn-icon btn-sm waves-effect waves-light btn-warning"
+                                <a href="{{ route('visits.edit', $visit->id) }}" class="btn btn-icon btn-sm waves-effect waves-light btn-warning"
                                     data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"> <i
-                                        class="fas fa-pencil-alt"></i> </button>
-                                <button type="button" class="btn btn-icon btn-sm waves-effect waves-light btn-danger sa-delete"
+                                        class="fas fa-pencil-alt"></i> </a>
+                                <a href="{{ route('visits.destroy', $visit->id) }}"
+                                    class="btn btn-icon btn-sm waves-effect waves-light btn-danger sa-delete"
                                     data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus"> <i
-                                        class="fas fa-trash-alt"></i> </button>
+                                        class="fas fa-trash-alt"></i> </a>
                             </div>
                         </td>
-                        <td>01 Januari 2020 | 10.10</td>
-                        <td>Mata</td>
-                        <td>M001</td>
-                        <td>1234567890</td>
-                        <td><a href="medical-record-patient.html">Avatar</a></td>
-                        <td>Perempuan</td>
-                        <td>Sumedang, 01 Januari 2000</td>
-                        <td>Sumedang Selatan</td>
-                        <td>Sumedang</td>
-                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente molestias enim dolores,
-                            ipsa accusantium vel odio quaerat et unde sit distinctio sequi atque minus impedit quam
-                            voluptates provident quos voluptatibus.</td>
-                        <td>0832476523</td>
-                        <td>Islam</td>
-                        <td>Progamer</td>
-                        <td>Belum Menikah</td>
-                        <td>BPJS</td>
-                        <td>123456789</td>
-                        <td>1</td>
+                        <td>{{ tgl_indo($visit->created_at, true, true) }}</td>
+                        <td>{{ $visit->polyclinic->polyclinic_name }}</td>
+                        <td>{{ $visit->registration_number }}</td>
+                        <td>{{ $visit->patient->nik }}</td>
+                        <td><a href="{{ route('patients.show', $visit->patient_id) }}">{{ $visit->patient->name }}</a></td>
+                        <td>{{ $visit->patient->gender }}</td>
+                        <td>{{ $visit->patient->birthplace.', '.tgl_indo($visit->patient->birthdate) }}</td>
+                        <td>{{ $visit->patient->complete_address }}</td>
+                        <td>{{ $visit->patient->phone }}</td>
+                        <td>{{ $visit->patient->religion }}</td>
+                        <td>{{ $visit->patient->profession }}</td>
+                        <td>{{ $visit->patient->marital_status }}</td>
+                        <td>{{ $visit->guarantator }}</td>
+                        <td>{{ $visit->member_number }}</td>
+                        <td>{{ $visit->access_rights }}</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>
-                            <div class="button-list">
-                                <button type="button" class="btn btn-icon btn-sm waves-effect waves-light btn-warning"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"> <i
-                                        class="fas fa-pencil-alt"></i> </button>
-                                <button type="button" class="btn btn-icon btn-sm waves-effect waves-light btn-danger sa-delete"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus"> <i
-                                        class="fas fa-trash-alt"></i> </button>
-                            </div>
-                        </td>
-                        <td>01 Januari 2020 | 10.10</td>
-                        <td>Mata</td>
-                        <td>M001</td>
-                        <td>1234567892</td>
-                        <td><a href="medical-record-patient.html">Jacob</a></td>
-                        <td>Laki-laki</td>
-                        <td>Sumedang, 01 Januari 2000</td>
-                        <td>Sumedang Selatan</td>
-                        <td>Sumedang</td>
-                        <td>Sumedang</td>
-                        <td>084763425</td>
-                        <td>Islam</td>
-                        <td>Progamer</td>
-                        <td>Belum Menikah</td>
-                        <td>BPJS</td>
-                        <td>123456789</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>
-                            <div class="button-list">
-                                <button type="button" class="btn btn-icon btn-sm waves-effect waves-light btn-warning"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"> <i
-                                        class="fas fa-pencil-alt"></i> </button>
-                                <button type="button" class="btn btn-icon btn-sm waves-effect waves-light btn-danger sa-delete"
-                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus"> <i
-                                        class="fas fa-trash-alt"></i> </button>
-                            </div>
-                        </td>
-                        <td>01 Januari 2020 | 10.10</td>
-                        <td>Mata</td>
-                        <td>M001</td>
-                        <td>1234567893</td>
-                        <td><a href="medical-record-patient.html">Larry</a></td>
-                        <td>Laki-laki</td>
-                        <td>Sumedang, 01 Januari 2000</td>
-                        <td>Sumedang Selatan</td>
-                        <td>Sumedang</td>
-                        <td>Sumedang</td>
-                        <td>0832475347</td>
-                        <td>Islam</td>
-                        <td>Progamer</td>
-                        <td>Belum Menikah</td>
-                        <td>BPJS</td>
-                        <td>123456789</td>
-                        <td>1</td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

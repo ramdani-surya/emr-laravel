@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Poly;
+use App\Models\Polyclinic;
 use Illuminate\Http\Request;
 
 class PolyClinicController extends Controller
@@ -15,10 +16,11 @@ class PolyClinicController extends Controller
      */
     public function index()
     {
-        $subtitle = $this->subtitle;
-        $breadcrumbs = [$this->subtitle];
+        $data['subtitle'] = $this->subtitle;
+        $data['breadcrumbs'] = [$this->subtitle];
+        $data['polyclinics'] = Polyclinic::all();
 
-        return view('poly-clinic-data', compact('subtitle', 'breadcrumbs'));
+        return view('poly-clinic-data', $data);
     }
 
     /**

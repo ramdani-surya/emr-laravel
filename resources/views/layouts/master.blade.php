@@ -16,7 +16,6 @@
 
     <!-- App css -->
     {!! config('constant.resources.css.app') !!}
-
 </head>
 
 <body>
