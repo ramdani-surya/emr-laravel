@@ -100,7 +100,7 @@ class PatientController extends Controller
     {
         $data['subtitle']    = $this->subtitle;
         $data['breadcrumbs'] = [$this->subtitle, 'Tambah Pasien'];
-        $data['patient'] = $patient;
+        $data['patient']     = $patient;
 
         return view('patient-add', $data);
     }

@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Storage;
+
 function tgl_indo($datetime, $withDay = false, $withTime = false)
 {
     $hari = ($withDay === true) ? config('constant.hari') : null;
@@ -20,4 +22,13 @@ function tgl_indo($datetime, $withDay = false, $withTime = false)
     $time = ($withTime !== false) ? ' - '.date('H:i', strtotime($datetime)) : null ;
 
     return $stringDay.$stringDate.$time;
+}
+
+function profile_picture($path)
+{
+    $path = ($path) ? Storage::url($path) : asset('images/account_circle.png');
+
+    return '<div class="thumb-lg member-thumb mx-auto">
+                <img src="'. $path .'" class="rounded-circle avatar-xl img-thumbnail" alt="profile-image">
+            </div>';
 }

@@ -10,7 +10,7 @@ return [
             'boostrap_select'    => '<link href="' . env('APP_URL') . '/libs/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" type="text/css" />',
             'boostrap_tagsinput' => '<link href="' . env('APP_URL') . '/libs/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" type="text/css" />',
 
-            'datatable' => '<link href="'.env('APP_URL') . '/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+            'datatable' => '<link href="' . env('APP_URL') . '/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
                 <link href="' . env('APP_URL') . '/libs/datatables/buttons.bootstrap4.css" rel    = "stylesheet" type = "text/css" />
                 <link href="' . env('APP_URL') . '/libs/datatables/responsive.bootstrap4.css" rel = "stylesheet" type = "text/css" />
                 <link href="' . env('APP_URL') . '/libs/datatables/select.bootstrap4.css" rel     = "stylesheet" type = "text/css" />',
@@ -87,12 +87,13 @@ return [
             'x_editable_init' => '<script src="' . env('APP_URL') . '/js/pages/form-xeditable.init.js"></script>',
         ],
     ],
+    'role'           => ['admin', 'doctor', 'nurse', 'staff'],
     'gender'         => ['Laki-laki', 'Perempuan'],
     'blood_group'    => ['-', 'A', 'B', 'AB', 'O'],
     'religion'       => ['Islam', 'Protestan', 'Katolik', 'Hindu', 'Buddha', 'Kong Hu Chu'],
     'marital_status' => ['Belum Menikah', 'Menikah'],
     'guarantator'    => ['Umum', 'BPJS'],
-    'hari' => [
+    'hari'           => [
         'Sun' => 'Minggu',
         'Mon' => 'Senin',
         'Tue' => 'Selasa',
@@ -114,5 +115,8 @@ return [
         'Oktober',
         'November',
         'Desember'
+    ],
+    'file_directory' => [
+        'doctor' => '/public/users/doctors',
     ],
 ];

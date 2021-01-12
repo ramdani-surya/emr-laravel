@@ -11,33 +11,60 @@
             <h4 class="header-title">{{ $formTitle }}</h4>
             <p class="sub-header"></p>
 
-            <form class="parsley-examples">
+            <form class="parsley-examples" action="{{ $actionUrl }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @if (isset($user))
+                @method('put')
+                @endif
                 <div class="form-group clearfix">
                     <label class="control-label" for="foto">Foto</label>
                     <div>
-                        <input type="file" id="foto" class="filestyle" data-text="Masukkan foto" name="foto">
+                        <input type="file" id="foto" class="filestyle" data-text="Masukkan foto" name="photo"
+                            value="{{ !isset($user) ? old('photo') : $user->photo }}">
                     </div>
+                    @error('photo')
+                    <ul class="parsley-errors-list filled">
+                        <li>{{ $message }}</li>
+                    </ul>
+                    @enderror
                 </div>
 
                 <div class="form-group clearfix">
                     <label class="control-label" for="nama_lengkap">Nama Lengkap <span
                             class="text-danger">*</span></label>
                     <div>
-                        <input id="nama_lengkap" name="nama_lengkap" type="text" class="form-control"
-                            parsley-trigger="change" required>
+                        <input id="nama_lengkap" name="name" type="text" class="form-control" parsley-trigger="change"
+                            value="{{ !isset($user) ? old('name') : $user->name }}" required>
                     </div>
+                    @error('name')
+                    <ul class="parsley-errors-list filled">
+                        <li>{{ $message }}</li>
+                    </ul>
+                    @enderror
                 </div>
 
                 <div class="form-group clearfix">
                     <label class="control-label" for="jenis_kelamin">Jenis Kelamin<span
                             class="text-danger">*</span></label>
                     <div>
-                        <select class="form-control select2" id="jenis_kelamin" name="jenis_kelamin" required>
+                        <select class="form-control select2" id="jenis_kelamin" name="gender" required>
                             <option disabled selected>-- Pilih jenis kelamin --</option>
-                            <option value="Laki-laki">Laki-laki</option>
-                            <option value="Perempuan">Perempuan</option>
+
+                            @php
+                            $selectedGender = !isset($user) ? old('gender') : $user->gender
+                            @endphp
+
+                            @foreach (config('constant.gender') as $gender)
+                            <option value="{{ $gender }}" @if ($selectedGender===$gender) selected @endif>{{ $gender }}
+                            </option>
+                            @endforeach
                         </select>
                     </div>
+                    @error('gender')
+                    <ul class="parsley-errors-list filled">
+                        <li>{{ $message }}</li>
+                    </ul>
+                    @enderror
                 </div>
 
                 <div class="form-row clearfix">
@@ -45,68 +72,111 @@
                         <label for="tempat_lahir" class="col-form-label control-label">Tempat,<span
                                 class="text-danger">*</span></label>
                         <div>
-                            <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" required>
+                            <input type="text" class="form-control" id="tempat_lahir" name="birthplace"
+                                value="{{ !isset($user) ? old('birthplace') : $user->birthplace }}" required>
                         </div>
+                        @error('birthplace')
+                        <ul class="parsley-errors-list filled">
+                            <li>{{ $message }}</li>
+                        </ul>
+                        @enderror
                     </div>
 
                     <div class="form-group col-md-8">
                         <label for="tanggal_lahir" class="col-form-label control-label">Tanggal Lahir<span
                                 class="text-danger">*</span></label>
                         <div>
-                            <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" required>
+                            <input type="date" class="form-control" id="tanggal_lahir" name="birthdate"
+                                value="{{ !isset($user) ? old('birthdate') : $user->birthdate }}" required>
                         </div>
+                        @error('birthdate')
+                        <ul class="parsley-errors-list filled">
+                            <li>{{ $message }}</li>
+                        </ul>
+                        @enderror
                     </div>
                 </div>
 
                 <div class="form-group clearfix">
-                    <label class="control-label" for="alamat">Alamat<span
-                            class="text-danger">*</span></label>
+                    <label class="control-label" for="alamat">Alamat Lengkap<span class="text-danger">*</span></label>
                     <div>
-                        <textarea class="form-control" name="alamat" id="alamat" rows="5"
-                            required></textarea>
+                        <textarea class="form-control" name="complete_address" id="alamat" rows="5"
+                            required>{{ !isset($user) ? old('complete_address') : $user->complete_address }}</textarea>
                     </div>
+                    @error('complete_address')
+                    <ul class="parsley-errors-list filled">
+                        <li>{{ $message }}</li>
+                    </ul>
+                    @enderror
                 </div>
 
                 <div class="form-group clearfix">
                     <label class="control-label" for="telepon">Telepon<span class="text-danger">*</span></label>
                     <div>
-                        <input class="form-control" id="telepon" type="text" data-parsley-type="number"
-                            data-toggle="input-mask" data-mask-format="+(00) 000-0000-0000"
-                            placeholder="+(62) 812-3456-7890" name="telepon" required>
+                        <input class="form-control" id="telepon" type="text" data-toggle="input-mask"
+                            data-mask-format="+(00) 000-0000-0000" placeholder="+(62) 812-3456-7890" name="phone"
+                            value="{{ !isset($user) ? old('phone') : $user->phone }}" required>
                         <span class="font-13 text-muted">Masukkan dengan kode area.</span>
                     </div>
+                    @error('phone')
+                    <ul class="parsley-errors-list filled">
+                        <li>{{ $message }}</li>
+                    </ul>
+                    @enderror
                 </div>
 
                 <div class="form-group clearfix">
                     <label class="control-label" for="email">Email<span class="text-danger">*</span></label>
                     <div>
                         <input class="form-control" id="email" type="email" parsley-trigger="change" name="email"
-                            required>
+                            value="{{ !isset($user) ? old('email') : $user->email }}" required>
                     </div>
+                    @error('email')
+                    <ul class="parsley-errors-list filled">
+                        <li>{{ $message }}</li>
+                    </ul>
+                    @enderror
                 </div>
 
                 <div class="form-group clearfix">
                     <label class="control-label" for="agama">Agama<span class="text-danger">*</span></label>
                     <div>
-                        <select class="required form-control select2" id="agama" name="agama" required>
+                        <select class="required form-control select2" id="agama" name="religion" required>
                             <option disabled selected>-- Pilih agama --</option>
-                            <option value="Islam">Islam</option>
-                            <option value="Protestan">Protestan</option>
-                            <option value="Katolik">Katolik</option>
-                            <option value="Hindu">Hindu</option>
-                            <option value="Buddha">Buddha</option>
-                            <option value="Kong Hu Chu">Konghuchu</option>
+
+                            @php
+                            $selectedReligion = !isset($user) ? old('religion') : $user->religion
+                            @endphp
+
+                            @foreach (config('constant.religion') as $religion)
+                            <option value="{{ $religion }}" @if ($selectedReligion===$religion) selected @endif>
+                                {{ $religion }}</option>
+                            @endforeach
                         </select>
                     </div>
+                    @error('religion')
+                    <ul class="parsley-errors-list filled">
+                        <li>{{ $message }}</li>
+                    </ul>
+                    @enderror
                 </div>
 
                 <div class="form-group clearfix password-form">
-                    <label class="control-label" for="password">Password <span class="text-danger">*</span></label>
+                    <label class="control-label" for="password">Password @if (!isset($user)) <span
+                            class="text-danger">*</span> @endif</label>
                     <div>
-                        <input id="password" name="password" type="text" class="form-control" required>
+                        <input id="password" name="password" type="password" class="form-control" @if (!isset($user))
+                            required @endif>
+                        @if (isset($user))
+                        <span class="font-13 text-muted">Masukkan password baru untuk ubah password.</span>
+                        @endif
                     </div>
+                    @error('password')
+                    <ul class="parsley-errors-list filled">
+                        <li>{{ $message }}</li>
+                    </ul>
+                    @enderror
                 </div>
-
 
                 <div class="form-group clearfix">
                     <label class="col-lg-12 control-label ">(<span class="text-danger">*</span>) Wajib
@@ -115,7 +185,7 @@
 
                 <div class="form-group clearfix">
                     <div class="button-list" style="float: right">
-                        <button type="button" class="btn btn-light btn-rounded waves-effect">Batal</button>
+                        <a href="{{ $backUrl }}" class="btn btn-light btn-rounded waves-effect">Batal</a>
                         <button type="submit"
                             class="btn btn-primary btn-rounded waves-light waves-effect">Simpan</button>
                     </div>
@@ -128,28 +198,37 @@
 
 
 @section('required_js')
+
 <script>
-    $(document).ready(function () {
-        if ($('.header-title').text() === 'Tambah Dokter') {
-            $('.password-form').after('<div class="form-group clearfix">' +
-                '<label class="control-label" for="poliklinik">Poliklinik<span class="text-danger">*</span></label>' +
-                '<div>' +
-                '<select class="form-control select2" id="poliklinik" name="poliklinik" required>' +
-                '<option disabled selected>-- Pilih poliklinik --</option>' +
-                '<option value="Umum">Umum</option>' +
-                '<option value="Gigi">Gigi</option>' +
-                '<option value="Penyakit Dalam">Penyakit Dalam</option>' +
-                '<option value="Anak">Anak</option>' +
-                '<option value="Kebidanan dan Kandungan">Kebidanan & Kandungan</option>' +
-                '<option value="Penyakit Syaraf">Penyakit Syaraf</option>' +
-                '<option value="Kulit dan Kelamin">Kulit dan Kelamin</option>' +
-                '<option value="Mata">Mata</option>' +
-                '<option value="Radiologi">Radiologi</option>' +
-                '</select>' +
-                '</div>' +
-                '</div>');
+    $(function () {
+        const pageTitle = $('.header-title').text();
+
+        if (pageTitle === 'Tambah Dokter' || pageTitle === 'Edit Dokter') {
+            $.ajax({
+                type: "get",
+                url: "/api/polyclinics",
+                dataType: "json",
+                success: function (response) {
+                    let options = '';
+
+                    response.forEach(polyclinic => {
+                        options +=
+                            `<option value="${polyclinic.id}">${polyclinic.polyclinic_name}</option>`;
+                    });
+
+                    $('.password-form').after('<div class="form-group clearfix">' +
+                        '<label class="control-label" for="poliklinik">Poliklinik<span class="text-danger">*</span></label>' +
+                        '<div>' +
+                        '<select class="form-control select2" id="poliklinik" name="polyclinic" required>' +
+                        '<option disabled selected>-- Pilih poliklinik --</option>' +
+                        options +
+                        '</select>' +
+                        '</div>' +
+                        '</div>');
+                }
+            });
         }
-    });
+    })
 
 </script>
 
