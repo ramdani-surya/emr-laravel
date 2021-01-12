@@ -43,9 +43,9 @@
                         <td>{{ $patient->phone }}</td>
                         <td>
                             <div class="button-list">
-                                <button type="button" class="btn btn-icon waves-effect waves-light btn-warning"
+                                <a href="{{ route('patients.edit', $patient->id) }}" class="btn btn-icon waves-effect waves-light btn-warning"
                                     data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"> <i
-                                        class="fas fa-pencil-alt"></i> </button>
+                                        class="fas fa-pencil-alt"></i> </a>
                                 <button type="button" class="btn btn-icon waves-effect waves-light btn-danger sa-delete"
                                     data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus"> <i
                                         class="fas fa-trash-alt"></i> </button>

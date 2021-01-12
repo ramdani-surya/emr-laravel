@@ -31,10 +31,10 @@ class PatientController extends Controller
      */
     public function create()
     {
-        $subtitle    = $this->subtitle;
-        $breadcrumbs = [$this->subtitle, 'Tambah Pasien'];
+        $data['subtitle']    = $this->subtitle;
+        $data['breadcrumbs'] = [$this->subtitle, 'Tambah Pasien'];
 
-        return view('patient-add', compact('subtitle', 'breadcrumbs'));
+        return view('patient-add', $data);
     }
 
     /**
@@ -98,7 +98,11 @@ class PatientController extends Controller
      */
     public function edit(Patient $patient)
     {
-        //
+        $data['subtitle']    = $this->subtitle;
+        $data['breadcrumbs'] = [$this->subtitle, 'Tambah Pasien'];
+        $data['patient'] = $patient;
+
+        return view('patient-add', $data);
     }
 
     /**
@@ -110,7 +114,35 @@ class PatientController extends Controller
      */
     public function update(Request $request, Patient $patient)
     {
-        //
+        $request->validate([
+            "nik"    => "required|numeric|unique:patients,nik,$patient->id",
+            "name"   => 'required',
+            "gender" => [
+                'required',
+                Rule::in(config('constant.gender')),
+            ],
+            "birthplace"  => 'required',
+            "birthdate"   => 'required|date',
+            "blood_group" => [
+                'required',
+                Rule::in(config('constant.blood_group')),
+            ],
+            "complete_address" => 'required',
+            "phone"            => 'required',
+            "religion"         => [
+                'required',
+                Rule::in(config('constant.religion')),
+            ],
+            "profession"     => 'nullable',
+            "marital_status" => [
+                'required',
+                Rule::in(config('constant.marital_status')),
+            ],
+        ]);
+
+        $patient->update($request->all());
+
+        return redirect(route('patients.index'));
     }
 
     /**
