@@ -2,14 +2,13 @@
 
 @section('required_css')
 {!! config('constant.resources.css.datatable') !!}
-{!! config('constant.resources.css.sweet_alert') !!}
 @endsection
 
 @section('content')
 <div class="row">
     <div class="col-12">
         <div class="card-box table-responsive">
-            <h4 class="header-title">Data Dokter</h4>
+            <h4 class="header-title">{{ $dataTitle }}</h4>
 
             <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
                 style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -17,10 +16,11 @@
                     <tr>
                         <th>#</th>
                         <th>
-                            <a href="{{ route('doctors.create') }}"
-                                class="btn btn-success waves-light waves-effect">Tambah</a>
+                            <a href="{{ $createUrl }}" class="btn btn-success waves-light waves-effect">Tambah</a>
                         </th>
+                        @if ($subtitle === 'Dokter')
                         <th>Poliklinik</th>
+                        @endif
                         <th>Foto</th>
                         <th>Nama</th>
                         <th>Jenis Kelamin</th>
@@ -34,18 +34,18 @@
 
                 <tbody>
                     @php $number = 1 @endphp
-                    @foreach ($doctors as $doctor)
+                    @foreach ($users as $user)
                     <tr>
                         <td>{{ $number++ }}</td>
                         <td>
                             <div class="button-list">
-                                <a href="{{ route('doctors.edit', $doctor->id) }}"
+                                <a href="{{ $editUrl.'/'.$user->id }}"
                                     class="btn btn-icon waves-effect waves-light btn-warning" data-toggle="tooltip"
                                     data-placement="top" title="" data-original-title="Edit"> <i
                                         class="fas fa-pencil-alt"></i> </a>
 
-                                <form action="{{ route('doctors.destroy', $doctor->id) }}" method="post"
-                                    style="display: inline" onsubmit="return confirm('Apakah anda yakin?')">
+                                <form action="{{ $deleteUrl.'/'.$user->id }}" method="post" style="display: inline"
+                                    onsubmit="return confirm('Apakah anda yakin?')">
                                     @csrf
                                     @method('delete')
                                     <button type="submit" class="btn btn-icon waves-effect waves-light btn-danger"
@@ -55,14 +55,21 @@
                                 </form>
                             </div>
                         </td>
-                        <td>{{ $doctor->polyclinic->polyclinic_name }}</td>
-                        <td>{!! profile_picture($doctor->photo) !!}</td>
-                        <td>{{ $doctor->name }}</td>
-                        <td>{{ $doctor->gender }}</td>
-                        <td>{{ $doctor->birthplace.", ".tgl_indo($doctor->birthdate) }}</td>
-                        <td>{{ $doctor->address }}</td>
-                        <td>{{ $doctor->phone }}</td>
-                        <td>{{ $doctor->religion }}</td>
+                        @if ($subtitle === 'Dokter')
+                        <td>{{ $user->polyclinic->polyclinic_name }}</td>
+                        @endif
+                        <td>
+                            <div class="thumb-lg member-thumb mx-auto">
+                                <img src="{{ profile_picture($user->photo) }}" class="rounded-circle avatar-xl img-thumbnail"
+                                    alt="profile-image">
+                            </div>
+                        </td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->gender }}</td>
+                        <td>{{ $user->birthplace.", ".tgl_indo($user->birthdate) }}</td>
+                        <td>{{ $user->address }}</td>
+                        <td>{{ $user->phone }}</td>
+                        <td>{{ $user->religion }}</td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -75,6 +82,5 @@
 @section('required_js')
 {!! config('constant.resources.js.datatable') !!}
 {!! config('constant.resources.js.datatable_init') !!}
-{!! config('constant.resources.js.sweet_alert') !!}
 {!! config('constant.resources.js.semar') !!}
 @endsection

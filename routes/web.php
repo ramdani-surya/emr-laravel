@@ -30,10 +30,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/medical-records/history/{medical_record}', 'MedicalRecordController@showHistory')->name('medical-records.history');
 
     Route::group(['prefix' => 'human-resources'], function () {
-        Route::resource('doctors', 'DoctorController');
-        Route::resource('nurses', 'NurseController');
-        Route::resource('staffs', 'StaffController');
-        Route::resource('admins', 'AdminController');
+        Route::get('/{link}', 'HumanResourcesController@index')->name('hr.index');
+        Route::get('/{link}/create', 'HumanResourcesController@create')->name('hr.create');
+        Route::post('/{link}/store', 'HumanResourcesController@store')->name('hr.store');
+        Route::get('/{link}/edit/{user?}', 'HumanResourcesController@edit')->name('hr.edit');
+        Route::put('/{link}/update/{user?}', 'HumanResourcesController@update')->name('hr.update');
+        Route::delete('/{link}/destroy/{user?}', 'HumanResourcesController@destroy')->name('hr.destroy');
     });
 
     Route::group(['prefix' => 'pharmacies'], function () {

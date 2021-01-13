@@ -120,9 +120,9 @@
                     <li class="dropdown notification-list">
                         <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#"
                             role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src="{{ asset('images/users/ramdani.jpg') }}" alt="user-image" class="rounded-circle">
+                            <img src="{{ profile_picture(Auth::user()->photo) }}" alt="user-image" class="rounded-circle">
                             <span class="pro-user-name ml-1">
-                                Ramdani Surya M. <i class="mdi mdi-chevron-down"></i>
+                                {{ Auth::user()->name }} <i class="mdi mdi-chevron-down"></i>
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -211,10 +211,10 @@
                         <li class="has-submenu">
                             <a href="#"><i class="icon-people"></i> SDM <div class="arrow-down"></div></a>
                             <ul class="submenu">
-                                <li><a href="{{ route('doctors.index') }}">Dokter</a></li>
-                                <li><a href="{{ route('nurses.index') }}">Perawat</a></li>
-                                <li><a href="{{ route('staffs.index') }}">Staf Administrasi</a></li>
-                                <li><a href="{{ route('admins.index') }}">Administrator</a></li>
+                                <li><a href="{{ route('hr.index', 'doctor') }}">Dokter</a></li>
+                                <li><a href="{{ route('hr.index', 'nurse') }}">Perawat</a></li>
+                                <li><a href="{{ route('hr.index', 'staff') }}">Staf Administrasi</a></li>
+                                <li><a href="{{ route('hr.index', 'admin') }}">Administrator</a></li>
                             </ul>
                         </li>
 

@@ -26,9 +26,5 @@ function tgl_indo($datetime, $withDay = false, $withTime = false)
 
 function profile_picture($path)
 {
-    $path = ($path) ? Storage::url($path) : asset('images/account_circle.png');
-
-    return '<div class="thumb-lg member-thumb mx-auto">
-                <img src="'. $path .'" class="rounded-circle avatar-xl img-thumbnail" alt="profile-image">
-            </div>';
+    return ($path) ? Storage::url($path) : asset('images/account_circle.png');
 }

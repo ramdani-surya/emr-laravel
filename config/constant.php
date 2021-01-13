@@ -116,7 +116,4 @@ return [
         'November',
         'Desember'
     ],
-    'file_directory' => [
-        'doctor' => '/public/users/doctors',
-    ],
 ];
